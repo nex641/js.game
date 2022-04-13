@@ -1,4 +1,5 @@
 class GenerationKey {
+    const { createHash } = require('crypto');
     hmac(message, key) {
         return createHash('sha256').update(message + key).digest('hex');
     }
