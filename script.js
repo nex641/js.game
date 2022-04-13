@@ -1,0 +1,1 @@
+new Processor().start(args);
