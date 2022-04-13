@@ -1,6 +1,6 @@
 class Processor {
     start(args) {
-        let check = new Check();
+        check = new Check();
         let generation = new GenerationKey();
         let choice;
         let computerMove;
