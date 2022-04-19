@@ -1,4 +1,4 @@
-args = process.stdin.on('data', data => {
-    process.exit();
-});
-new Processor().start(args);
+let arr = process.argv;
+arr.shift();
+arr.shift();
+new Processor().start(arr);

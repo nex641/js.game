@@ -1,6 +1,6 @@
 class Processor {
     start(args) {
-        check = new Check();
+        let check = new Check();
         let generation = new GenerationKey();
         let choice;
         let computerMove;
@@ -9,9 +9,9 @@ class Processor {
             return;
         }
         let hmacKey = generation.hmacKey();
-        computerMove = (int)(Math.random() * args.length);
-        hmac = generation.hmac(args[computerMove], hmacKey);
-        console.log("HMAC:  " + hmac);
+        computerMove = Math.round((Math.random() * args.length));
+        let hmac = generation.hmac(args[computerMove], hmacKey);
+        console.log("HMAC:" + hmac);
         console.log("Available moves:");
         for (let i = 0; i < args.length; i++) {
             console.log(i + 1 + " - " + args[i]);
@@ -19,10 +19,8 @@ class Processor {
         console.log("0 - Exit\n? - Help");
         do {
             do {
-                console.log("Enter your move: ");
-                choice = process.stdin.on('data', data => {
-                    process.exit();
-                });
+                let readline = require('readline-sync');;
+                choice = readline.question("Enter your choice: ");
             } while (check.inputData(choice, args.length));
             if (choice == "?") {
                 new HelpTable().show(computerMove, args);
